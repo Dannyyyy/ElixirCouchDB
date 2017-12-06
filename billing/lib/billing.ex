@@ -15,11 +15,8 @@ defmodule Billing do
 
   def hello do
     db_props = %{protocol: "http", hostname: "localhost", database: "couchdb_connector_dev", port: 5984}
-    ##Couchdb.Connector.Storage.storage_up(db_props)
-    ##Couchdb.Connector.Writer.create(db_props, "{\"phoneNo\": \"666\", \"balance\": \"333\"}", "123")
-    ##updated = %{current | "phone" => "new value"}
-    ##Couchdb.Connector.Writer.destroy(db_props, "666", )
-    ##Couchdb.Connector.Writer.get(db_props, "foo")
+    Couchdb.Connector.Storage.storage_up(db_props)
+    Couchdb.Connector.Writer.create(db_props, "{\"phoneNo\": \"666\", \"balance\": \"333\"}", "123")
     id = "123"
     {:ok, reloaded} = Connector.get(db_props, id)
     newBalance = String.to_integer(reloaded["balance"]) - 100
